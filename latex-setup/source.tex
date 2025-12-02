@@ -1,0 +1,69 @@
+\documentclass[14pt]{extarticle}
+
+\usepackage{preamble}
+
+\begin{document}
+    \thispagestyle{empty}
+    {
+        \setstretch{1.0}
+        \centerline{Title head}
+    }
+    
+    \vspace{14pt}
+
+    \begin{center}\bf Title Page\end{center}
+    
+    \vspace{7pt}
+
+    \begin{center}
+        \begin{tabular}{ p{7cm} p{-1.5cm} p{7cm} }
+            {\bf Author:} & & Last-name Name Middle-name (russian "ФИО" format)\\
+            & & \vspace{10pt}\rule{6cm}{0.019cm}\\ % Signature
+            & & «\rule{1cm}{0.019cm}»\ \rule{3cm}{0.019cm}\ 20\_\_ г.\\ % Date
+        \end{tabular}
+    \end{center}
+    
+    \vfill
+    
+    \centerline{Place (e.g. city) year}\vspace{-0,7cm}
+
+    \newpage
+    
+    \tableofcontents
+
+    \newpage
+    
+    \phantomsection
+    \section*{\normalfont\centerline{\makebox[-2.18cm]{}First Section}}
+    \addcontentsline{toc}{section}{\makebox[1.2cm]{}First section} % It sets up an appearance of First Section in the Contents 
+
+    Text text text...
+
+    \newpage
+
+    \section{Second section}
+    
+    \subsection{Subsection of the second one}
+        
+    Text text text and citation \cite{wang2024a}...
+ 
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{she1-2652401-large}
+        \caption{Figure's caption}
+    \end{figure}
+    
+    % Some math
+    \begin{equation}
+        \label{heateq}
+        c\rho\dfrac{\partial T}{\partial t} = \mathrm{div}\lt \lambda \nabla T \rt  + q(\mathbf{r}, t)
+    \end{equation}
+    
+    % These two lines add the reference list title. It is a fallback for \defbibheading, which is in the preamble.sty file.
+    %\section*{\hspace{-1.25cm}\normalfont\centerline{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}}
+    %\addcontentsline{toc}{section}{СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ}
+    
+    \newpage
+    \printbibliography[heading=bibintoc] % Add the reference list.
+\end{document}
+\bye

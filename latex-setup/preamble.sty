@@ -1,0 +1,279 @@
+% Before to use polyglossia, babel package used and it kept here as fallback. Let it will be here.
+% If you will use it, place it that as it placed here, in the comments.
+
+% Babel Fallback
+% \usepackage[english]{babel}
+% \babelprovide[main]{russian}
+% \babelprovide{english}
+% \selectlanguage{russian} % Use it inside the document env!
+
+\ProvidesPackage{preamble}
+
+%\usepackage{longtable}
+
+\usepackage{minted} % Code highlighting.
+\usepackage{csquotes}
+\usepackage[shortcuts]{extdash}
+\usepackage{polyglossia}
+
+\setminted{%
+%    style=fruity,
+    breaklines=true,
+%    bgcolor=gray,
+}
+
+% It is the necessary set up for polyglossia:
+%  setting up a font name for a Cyrillic script of a language,
+%  setting up a default language,
+%  and other (additional) language.
+\newfontfamily\cyrillicfont{Times New Roman}
+\newfontfamily\cyrillicfonttt{Share Tech Mono}
+\setdefaultlanguage{russian}
+\setotherlanguage{english}
+
+\usepackage[backend=biber,
+            style=gost-numeric,
+            sorting=none,
+            blockpunct=space,
+            language=russian,
+            autolang=langname]{biblatex}
+
+\addbibresource{references.bib} % A path to a list of your references, which is in Bib(La)TeX format
+\usepackage{emoji}
+\usepackage{fontspec}
+\usepackage{tocloft}
+\usepackage{setspace}
+\usepackage{geometry}
+\setemojifont{EmojiOne_Color.otf}[
+    Path=/path/to/EmojiOne/]
+\geometry{%
+    a4paper,
+    lmargin=10mm,
+    rmargin=10mm,
+    tmargin=10mm,
+    bmargin=17.4mm,
+}
+
+\setmainfont{Times New Roman}
+\setstretch{1.5}
+\setlength{\parindent}{1.25cm}
+\tolerance=6900 % Got by experiment
+
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+
+\graphicspath{%
+    {images}%
+    {images/pdf}%
+    {images/eps}%
+    {images/png}%
+    {images/jpg}}
+
+\usepackage{svg}
+
+\svgpath{%
+    {images/}%
+    {images/svg}}
+\svgsetup{%
+    inkscapepath=images/svg/svg-inkscape/,
+    inkscapeformat=pdf,
+}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{hyphenat} % This package allows to prevent hyphenation of a text piece by the \nohyphens{} command.
+\usepackage[intlimits]{amsmath}
+
+% Use either a unicode-math pack or newtxmath one. Each has its features, e.g. newtxmath sets up the Times New Roman font for formulae.
+%\usepackage{unicode-math}
+
+\usepackage{newtxtext} % This sets up regular characters.
+\usepackage{newtxmath} % This sets up math characters.
+
+\usepackage{icomma}
+
+\usepackage[bb=ncmbbr]{mathalpha}
+
+%\removenolimits{\int} % \int operator and the following ones aren't handeled as no limits operator of unicode-math. This corrects limit positions, they are at the top and the bottom of integral
+%\removenolimits{\iint}
+%\removenolimits{\iiint}
+%\removenolimits{\iiiint}
+%\removenolimits{\oint}
+%\removenolimits{\oiint}
+%\removenolimits{\oiiint}
+
+%\usepackage{mathtools} % Advanced math support. It breaks the TOC
+
+\usepackage{ragged2e} % Advanced aligning text
+
+\usepackage{hyperref} % Add hyperlinks and control PDF metadata
+
+% PDF setup 
+\hypersetup{%
+    % Links Setup
+    breaklinks=true,%
+    pdfnewwindow=true,%
+    colorlinks=true,%
+    linkcolor=orange,%
+    citecolor=black,%
+    filecolor=black,%
+    urlcolor=black,%
+%
+    % PDF Setup
+    bookmarks=true,%
+    unicode=true,%
+    pdftoolbar=false,%
+    pdfmenubar=false,%
+    pdffitwindow=false,%
+    pdfstartview={FitW},%
+%    
+    % PDF Metadata (it builds an incognito PDF)
+    pdftitle={},%
+    pdfauthor={},%
+    pdfsubject={},%
+    pdfcreator={},%
+    pdfproducer={},%
+    pdfcreationdate={},%
+    pdfmoddate={},%
+    pdflang={},%
+}
+
+\usepackage[version=4]{mhchem} % Chemistry formulae
+
+% Setup of the content title.
+\renewcommand{\cfttoctitlefont}{\hfill\MakeUppercase}
+\renewcommand{\cftaftertoctitle}{\vspace{-14pt}\hfill\mbox{}}
+%
+
+\renewcommand{\cftsecfont}{\hspace{-1.25cm}\normalfont} % Setup of the section entry font.
+\renewcommand{\cftsubsecfont}{\normalfont} % Setup of the subsection entry font.
+
+% Setup of alignment of the title lable and the title text.
+\setlength{\cftsecnumwidth}{0cm}
+\renewcommand{\cftsecpresnum}{\hspace{1.25cm}}
+\renewcommand{\cftsecaftersnumb}{\hspace{2cm}}
+%
+
+\renewcommand{\cftsecpagefont}{\normalfont} % Setup of the section entry page font.
+\renewcommand{\cftsubsecpagefont}{\normalfont} % Setup of the subsection entry page font.
+
+\renewcommand{\cftbeforesecskip}{\setlength{0pt}} % Setup of the section entry before skip.
+\renewcommand{\cftbeforesubsecskip}{\setlength{0pt}} % Setup of the subsection entry before skip.
+
+\renewcommand{\cftsecdotsep}{3} % Setup of the gap of leader dots for section entries. 
+\renewcommand{\cftsubsecdotsep}{3} % Setup of the gap of leader dots for subsection entries.
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}} % Setup of the leader kind for section entries.
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftsubsecdotsep}} % Setup of the leader kind for subsection entries.
+
+% Change the indetation of the reference list.
+\defbibenvironment{bibliography}
+  {\list
+     {\printtext[labelnumberwidth]{\printfield{prefixnumber}\printfield{labelnumber}}}
+     {\setlength{\labelwidth}{-49.5pt}
+      \setlength{\leftmargin}{0pt}
+      \setlength{\labelsep}{\biblabelsep}
+      \setlength{\itemindent}{0pt}
+      \setlength{\itemsep}{0pt}
+      \setlength{\parsep}{0pt}}}
+  {\endlist}
+  {\item}
+
+% Setup of the reference list title. The correct definition to see in the source code of the package.
+\defbibheading{bibintoc}[СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]{%
+    \phantomsection
+    \section*{\normalfont\centerline{\makebox[-2.18cm]{}#1}}%
+    \addcontentsline{toc}{section}{\makebox[1.2cm]{}Список использованных источников}%
+    \@mkboth{\abx@MakeMarkcase{#1}}{\abx@MakeMarkcase{#1}}%
+}
+
+% Replace the citation range dash from an em dash to an en dash which is breakable. In Russian, numeric ranges use an en dash and not an em dash or a hyphen.
+\DefineBibliographyExtras{russian}{%
+    \protected\def\bibrangedash{%
+        \textendash\penalty\hyphenpenalty}%
+}
+
+% The following 4 command lines set up the title format of document parts and have number values of arguments which selected by experiment, namely the 2nd argument of \fontsize of the 2nd argument of \titleformat is the baselineskip, the 3rd one of \titlespacing is the space before a section title and the next one - after the section title.
+
+% They are selected by such way to get the line scpacing equals 21pt, i.e. 1.5-line spacing.
+\titleformat{\section}[block]{\normalfont\bfseries\fontsize{14pt}{16.75pt}\selectfont\hspace{1.25cm}}{\thetitle\ }{0cm}{\hangindent=-1.25cm\hangafter=1} % It gives the necessary result, but with crutches. And in this solution DON'T use the hang shape in the second arg., becaues it will leades to the absence of the section in the ToC. 
+\titleformat{\subsection}[block]{\normalfont\bfseries\fontsize{14pt}{16.75pt}\selectfont\hspace{1.25cm}}{\thetitle\ }{0cm}{\hangindent=-1.25cm\hangafter=1}
+
+\titlespacing{\section}{0cm}{0pt}{0pt}
+\titlespacing{\subsection}{0cm}{0pt}{0pt}
+%
+
+% The setup of page numbers.
+\fancyhf{}
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[C]{\thepage}
+\setlength{\footskip}{21pt}
+
+% New commands
+\newcommand{\mdsh}{\textemdash\ } % Type the em dash.
+\newcommand{\ndsh}{\textendash\ } % Type the en dash.
+
+\newcommand{\rd}{\mathrm{d}} % A regular "d" for the differential 
+\newcommand{\stanstat}{⦵} % A symbol alias for the standard state (the Plimsoll sign)
+
+\newcommand{\lt}{\left(} 
+\newcommand{\rt}{\right)}
+
+\newcommand{\nextfignum}[1][1]{\addtocounter{figure}{#1}\arabic{figure}\addtocounter{figure}{-#1}} % Get the number of the next figure. We can change the in(de)crement value (i.e. the #1 parameter value)
+
+\newcommand{\nextabnum}[1][1]{\addtocounter{table}{#1}\arabic{table}\addtocounter{table}{-#1}} % Get the number of the next table. We can change the in(de)crement value (i.e. the #1 parameter value)
+
+\newcommand{\nexteqnum}[1][1]{\addtocounter{equation}{#1}\arabic{equation}\addtocounter{equation}{-#1}} % Get the number of the next equation. We can change the in(de)crement value (i.e. the #1 parameter value)
+
+% Define a separate caption style for tables.
+\DeclareCaptionLabelFormat{tb}{
+    Таблица #2
+}
+
+\DeclareCaptionLabelSeparator{tb}{\textemdash}
+
+\DeclareCaptionFormat{tb}{
+    \begin{minipage}[t]{\linewidth}
+        #1#2 #3
+    \end{minipage}
+}
+
+\captionsetup[table]{
+    format=tb,
+    labelformat=tb,
+    labelsep=tb,
+    width=\textwidth, % Used instead of margin.
+    skip=-14pt,
+    font={singlespacing},
+    %justification=centering, % When the minipage env is used, this option doesn't affect.
+    indent=0pt,
+    singlelinecheck=false,
+}
+
+% Define a separate caption style for figures.
+\DeclareCaptionLabelFormat{fig}{
+    Рисунок #2
+}
+
+\DeclareCaptionLabelSeparator{fig}{\textemdash}
+
+\DeclareCaptionFormat{fig}{
+    \begin{minipage}[t]{\linewidth}
+        \centering
+        #1#2 #3
+    \end{minipage}
+}
+
+\captionsetup[figure]{
+    format=fig,
+    labelformat=fig,
+    labelsep=fig,
+    width=\textwidth, % Used instead of margin.
+    skip=5pt, % Default is 14pt.
+    font={singlespacing},
+    %justification=centering, % When the minipage env is used, this option doesn't affect.
+    indent=0pt,
+    singlelinecheck=false,
+}
