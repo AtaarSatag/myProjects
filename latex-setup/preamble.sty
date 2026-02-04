@@ -40,7 +40,7 @@
 
 \addbibresource{references.bib} % A path to a list of your references, which is in Bib(La)TeX format
 \usepackage{emoji}
-\usepackage{fontspec}
+\usepackage{fontspec} % There are also fontenc, but it is outdated
 \usepackage{tocloft}
 \usepackage{setspace}
 \usepackage{geometry}
@@ -149,11 +149,15 @@
 \renewcommand{\cftsecfont}{\hspace{-1.25cm}\normalfont} % Setup of the section entry font.
 \renewcommand{\cftsubsecfont}{\normalfont} % Setup of the subsection entry font.
 
-% Setup of alignment of the title lable and the title text.
+% Setup of alignment of the title label and the title text.
 \setlength{\cftsecnumwidth}{0cm}
 \renewcommand{\cftsecpresnum}{\hspace{1.25cm}}
 \renewcommand{\cftsecaftersnumb}{\hspace{2cm}}
-%
+% The same as before but for a subsection
+\setlength{\cftsubsecnumwidth}{0cm}
+\renewcommand{\cftsubsecpresnum}{\hspace{1.25cm}}
+\renewcommand{\cftsubsecaftersnumb}{\hspace{2cm}}
+
 
 \renewcommand{\cftsecpagefont}{\normalfont} % Setup of the section entry page font.
 \renewcommand{\cftsubsecpagefont}{\normalfont} % Setup of the subsection entry page font.
@@ -167,7 +171,7 @@
 \renewcommand{\cftsecleader}{\cftdotfill{\cftsecdotsep}} % Setup of the leader kind for section entries.
 \renewcommand{\cftsubsecleader}{\cftdotfill{\cftsubsecdotsep}} % Setup of the leader kind for subsection entries.
 
-% Change the indetation of the reference list.
+% Change the indentation of the reference list.
 \defbibenvironment{bibliography}
   {\list
      {\printtext[labelnumberwidth]{\printfield{prefixnumber}\printfield{labelnumber}}}

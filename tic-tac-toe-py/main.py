@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from os import system as sys
 from sys import exit
+from os import system as sys
 from time import sleep as sleep
 from random import randint as randint
 
