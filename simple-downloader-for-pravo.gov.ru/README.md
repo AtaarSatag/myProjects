@@ -4,3 +4,8 @@ This python module is a simple downloader of PDF of publications from pravo.gov.
 - `to_date` is an end date of the period.
 
 The date parameters are lists or tuples and their format is `[day: int, month: int, year: int]`. You can also specify a save path, a default value is `./` (a working directory).
+
+To use the module you need `requests`, to install via pip:
+```bash
+pip install -r requirements.txt
+```
