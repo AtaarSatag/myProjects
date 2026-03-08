@@ -3,7 +3,6 @@ import re
 import string
 import random
 import subprocess
-from email.message import Message
 
 import requests 
 from bs4 import BeautifulSoup as bs
